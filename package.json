@@ -8,6 +8,7 @@
     "client": "cd client && npm start"
   },
   "dependencies": {
-    "if-env": "^1.0.4"
+    "if-env": "^1.0.4",
+    "pg": "^8.11.0"
   }
 }
