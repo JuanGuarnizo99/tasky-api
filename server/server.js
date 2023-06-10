@@ -3,10 +3,13 @@ const express = require('express');
 const app = express();
 const pool = require('./db');
 
-//get all todos
+// DEMO ROUTE get all todos
 app.get('/todos', async (req, res)=>{
+
+    const userEmail = "juansito1@test.com"
+
     try{
-        const todos = await pool.query('SELECT * FROM todos');
+        const todos = await pool.query('SELECT * FROM todos WHERE user_email = $1', [userEmail]);
         res.json(todos.rows);
     }
     catch(err){
