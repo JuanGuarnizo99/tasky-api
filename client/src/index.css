@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(100, 151, 177);
+    display: flex;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.app{
+    background-color: white;
+    box-shadow: rgba(100, 151, 177, 0.05) 0 6px 24px, rgba(0, 0, 0, 0.08) 0 0 0 1px;
+    border-radius: 10px;
+    padding: 10px;
+    width: 700px;
+    margin-top: 50px;
+}
+
+.button-container{
+    display:flex;
+    align-items: center;
+
+}
+
+/* button that lives inside a button container */
+.button-container button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border-radius: 120px;
+    background-color: transparent;
+    font-size: 11px;
+}
+
+.list-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: rgba(0, 0, 0, 0.05) 1px solid;
+}
+
