@@ -16,7 +16,7 @@ body {
     margin-top: 50px;
 }
 
-.button-container{
+.button-container, .info-container{
     display:flex;
     align-items: center;
 
@@ -31,6 +31,39 @@ body {
     font-size: 11px;
 }
 
+.create{
+    border: 1.5px solid teal;
+    color: teal;
+    background-color: transparent;
+    text-transform: uppercase;
+}
+
+.create:hover{
+    background-color: rgba(0, 128, 128, 0.15);
+}
+
+.create:active{
+    background-color: teal;
+    color: white;
+}
+
+.signout{
+    border: 1.5px solid teal;
+    color: teal;
+    background-color: transparent;
+    text-transform: uppercase;
+}
+
+.signout:hover{
+    background-color: rgba(0, 128, 128, 0.15);
+}
+
+.signout:active{
+    color: white;
+    background-color: teal;
+}
+
+/* List Header */
 .list-header{
     width: 100%;
     display: flex;
@@ -38,3 +71,50 @@ body {
     border-bottom: rgba(0, 0, 0, 0.05) 1px solid;
 }
 
+/* List Item */
+.list-item{
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0 0 0 1px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tick {
+    padding: 10px;
+
+}
+
+/* Buttons for the individual tasks */
+.edit{
+    border: 1.5px solid teal;
+    color: teal;
+    background-color: transparent;
+    text-transform: uppercase;
+}
+
+.edit:hover{
+    background-color: rgba(0, 128, 128, 0.15);
+}
+
+.edit:active{
+    color: white;
+    background-color: teal;
+}
+
+.delete{
+    border: 1.5px solid rgb(195, 78, 28);
+    color: rgb(195, 78, 28);
+    background-color: transparent;
+    text-transform: uppercase;
+}
+
+.delete:hover{
+    background-color: rgba(255,201,193, 0.30);
+}
+
+.delete:active{
+    color: white;
+    background-color: rgb(195, 78, 28);
+}
