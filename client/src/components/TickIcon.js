@@ -1,14 +1,7 @@
 function TickIcon() {
     return (
-      <svg 
-        className="tick"
-        xmlns="http://www.w3.org/2000/svg" 
-        width="25" 
-        height="25" 
-        fill="currentColor" 
-        class="bi bi-check" 
-        viewBox="0 0 16 16">
-        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+      <svg className= "tick" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+        <path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"/>
       </svg>
     );
   }

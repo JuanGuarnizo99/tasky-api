@@ -81,9 +81,16 @@ body {
     justify-content: space-between;
 }
 
-.tick {
+.tick{
     padding: 10px;
+}
 
+.list-item .tick path {
+    padding: 15px;
+    fill:none;
+    stroke: black;
+    stroke-miterlimit: 10;
+    stroke-width: 25px;
 }
 
 /* Buttons for the individual tasks */
