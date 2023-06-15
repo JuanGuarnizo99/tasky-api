@@ -5,7 +5,7 @@ import {useEffect, useState} from 'react';
 const App = ()=> {
   //states
   const [tasks, setTasks] = useState([]);
-  const userEmail = "juansito@test.com";
+  const userEmail = "juansito@gmail.com";
   //function to get data from db
   const getData = async () => {
     //Ask for the data to the backend
