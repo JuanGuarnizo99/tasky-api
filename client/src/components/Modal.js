@@ -4,6 +4,8 @@ import {useState} from "react";
 function Modal() {
   const mode = "create";
   const editMode = mode === "edit"? true : false;
+  
+  // data object represents a task
   const [data, setData] = useState({
     user_email: "",
     title: "",
@@ -11,6 +13,7 @@ function Modal() {
     date: editMode? "" : new Date()
   });
 
+  // changes the data object when typing on the input components
   const handleChange = (e) => {
     const {name, value} = e.target;
 
