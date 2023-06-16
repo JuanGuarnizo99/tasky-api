@@ -116,7 +116,7 @@ body {
     display: flex;
     justify-content: space-between;
 }
-
+/* Tick */
 .tick{
     padding: 10px;
 }
