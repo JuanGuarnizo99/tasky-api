@@ -1,9 +1,25 @@
-function Modal() {
+import {useState} from "react";
 
+
+function Modal() {
   const mode = "create";
+  const editMode = mode === "edit"? true : false;
+  const [data, setData] = useState({
+    user_email: "",
+    title: "",
+    progress: "",
+    date: editMode? "" : new Date()
+  });
 
   const handleChange = (e) => {
-    console.log("Changing!...");
+    const {name, value} = e.target;
+
+    setData(data => ({
+      ...data,
+      [name]: value
+    }));
+
+    console.log(data);
   }
 
   return (
@@ -19,7 +35,7 @@ function Modal() {
             maxLength="30"
             placeholder=" Your task goes here"
             name="title"
-            value={""}
+            value={data.title}
             onChange={handleChange}
           /> 
           <br/>
@@ -31,7 +47,7 @@ function Modal() {
             min="0"
             max="100"
             name="progress"
-            value={""}
+            value={data.progress}
             onChange={handleChange}
           /> 
           <br/>
@@ -42,6 +58,6 @@ function Modal() {
       </div>
     </div>
   );
-  }
+}
   
-  export default Modal;
+export default Modal;
