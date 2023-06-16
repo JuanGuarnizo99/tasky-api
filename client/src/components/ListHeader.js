@@ -1,3 +1,4 @@
+import Modal from "./Modal";
 function ListHeader({listName}) {
   //sign out function
   const signOut = () => {
@@ -11,6 +12,7 @@ function ListHeader({listName}) {
           <button className="create">New</button>
           <button className="signout" onClick={signOut}>Sign Out</button>
         </div>
+        <Modal/>
       </div>
     );
   }
