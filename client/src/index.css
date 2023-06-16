@@ -31,6 +31,7 @@ body {
     font-size: 11px;
 }
 
+/* Button to add a task */
 .create{
     border: 1.5px solid teal;
     color: teal;
@@ -47,6 +48,7 @@ body {
     color: white;
 }
 
+/* Button to sign out */
 .signout{
     border: 1.5px solid teal;
     color: teal;
@@ -61,6 +63,40 @@ body {
 .signout:active{
     color: white;
     background-color: teal;
+}
+
+/* Button to edit task */
+.edit{
+    border: 1.5px solid teal;
+    color: teal;
+    background-color: transparent;
+    text-transform: uppercase;
+}
+
+.edit:hover{
+    background-color: rgba(0, 128, 128, 0.15);
+}
+
+.edit:active{
+    color: white;
+    background-color: teal;
+}
+
+/* Button to delete task */
+.delete{
+    border: 1.5px solid rgb(195, 78, 28);
+    color: rgb(195, 78, 28);
+    background-color: transparent;
+    text-transform: uppercase;
+}
+
+.delete:hover{
+    background-color: rgba(255,201,193, 0.30);
+}
+
+.delete:active{
+    color: white;
+    background-color: rgb(195, 78, 28);
 }
 
 /* List Header */
@@ -93,35 +129,6 @@ body {
     stroke-width: 25px;
 }
 
-/* Buttons for the individual tasks */
-.edit{
-    border: 1.5px solid teal;
-    color: teal;
-    background-color: transparent;
-    text-transform: uppercase;
-}
 
-.edit:hover{
-    background-color: rgba(0, 128, 128, 0.15);
-}
 
-.edit:active{
-    color: white;
-    background-color: teal;
-}
 
-.delete{
-    border: 1.5px solid rgb(195, 78, 28);
-    color: rgb(195, 78, 28);
-    background-color: transparent;
-    text-transform: uppercase;
-}
-
-.delete:hover{
-    background-color: rgba(255,201,193, 0.30);
-}
-
-.delete:active{
-    color: white;
-    background-color: rgb(195, 78, 28);
-}
