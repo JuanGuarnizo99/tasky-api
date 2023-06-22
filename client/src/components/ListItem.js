@@ -13,7 +13,7 @@ function ListItem({task, getData}) {
   // Deletes a task object
   const deleteData = async (e) => {
     e.preventDefault();
-    await fetch(`http://localhost:8000/todos/${task.id}`, {
+    await fetch(`${process.env.REACT_APP_SERVERURL}/todos/${task.id}`, {
       method: "DELETE"
     })
    .then((res) => {

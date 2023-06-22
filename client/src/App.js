@@ -9,7 +9,7 @@ const App = ()=> {
   //function to get data from db
   const getData = async () => {
     //Ask for the data to the backend
-    await fetch(`http://localhost:8000/todos/${userEmail}`)
+    await fetch(`${process.env.REACT_APP_SERVERURL}/todos/${userEmail}`)
     .then(response => response.json())
     .then(data => {
       setTasks(data);
