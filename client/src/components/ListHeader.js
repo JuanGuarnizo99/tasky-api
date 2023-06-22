@@ -17,6 +17,7 @@ function ListHeader({listName}) {
         <button className="create" onClick={() => setShowModal(true)}>New</button>
         <button className="signout" onClick={signOut}>Sign Out</button>
       </div>
+      {/* If I click on the 'create' button, it shows the modal asking for the new task's data */}
       {showModal && <Modal mode={"create"} setShowModal={setShowModal}/>}
     </div>
   );
