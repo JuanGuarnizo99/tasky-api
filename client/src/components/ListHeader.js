@@ -1,7 +1,7 @@
 import Modal from "./Modal";
 import { useState } from "react";
 
-function ListHeader({listName}) {
+function ListHeader({listName, getData}) {
   //sign out function
   const signOut = () => {
     console.log("signout");
@@ -18,7 +18,7 @@ function ListHeader({listName}) {
         <button className="signout" onClick={signOut}>Sign Out</button>
       </div>
       {/* If I click on the 'create' button, it shows the modal asking for the new task's data */}
-      {showModal && <Modal mode={"create"} setShowModal={setShowModal}/>}
+      {showModal && <Modal mode={"create"} setShowModal={setShowModal} getData={getData}/>}
     </div>
   );
 }

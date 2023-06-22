@@ -29,8 +29,8 @@ const App = ()=> {
 
   return (
     <div className="app">
-      <ListHeader listName={" 👨🏻‍💻 CS tick list"}/>
-      {sortedTasks?.map((task) =><ListItem key={task.id} task={task} />)}
+      <ListHeader listName={" 👨🏻‍💻 CS tick list"} getData={getData}/>
+      {sortedTasks?.map((task) =><ListItem key={task.id} task={task} getData={getData}/>)}
     </div>
   );
 }

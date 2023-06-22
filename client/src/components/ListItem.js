@@ -6,7 +6,7 @@ import Modal from "./Modal";
 
 
 
-function ListItem({task}) {
+function ListItem({task, getData}) {
 
   const [showModal, setShowModal] = useState(false);
 
@@ -26,7 +26,7 @@ function ListItem({task}) {
 
       </div>
 
-      {showModal && <Modal mode={'edit'} setShowModal={setShowModal} task = {task}/>}
+      {showModal && <Modal mode={'edit'} setShowModal={setShowModal} task = {task} getData={getData}/>}
     </li>
   );
 }
