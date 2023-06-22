@@ -45,7 +45,6 @@ app.post('/todos', async (req, res)=>{
 });
 
 // Edit a todo
-
 app.put('/todos/:id', async (req, res)=>{
     const {id} = req.params;
     const {user_email, title, progress, date} = req.body;
@@ -59,6 +58,17 @@ app.put('/todos/:id', async (req, res)=>{
    .catch((err) => {
         console.error(err);
     }); 
+});
+
+// Delete a todo
+app.delete('/todos/:id', async (req, res)=>{
+    const {id} = req.params;
+    await pool.query('DELETE FROM todos WHERE id = $1 RETURNING *', [id])
+    .then((deletedTask) => {
+        console.log(deletedTask.rows);
+        res.status(200).json(deletedTask.rows);
+    })
+    .catch((err) => console.error(err));
 });
 
 

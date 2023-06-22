@@ -10,6 +10,21 @@ function ListItem({task, getData}) {
 
   const [showModal, setShowModal] = useState(false);
 
+  // Deletes a task object
+  const deleteData = async (e) => {
+    e.preventDefault();
+    await fetch(`http://localhost:8000/todos/${task.id}`, {
+      method: "DELETE"
+    })
+   .then((res) => {
+    if(res.status === 200) {
+      setShowModal(false);
+      getData();
+    }
+   })
+   .catch((err) => console.error(err));
+  };
+
 
   return (
     <li className="list-item">
@@ -22,7 +37,7 @@ function ListItem({task, getData}) {
       {/* button container */}
       <div className="button-container">
         <button className="edit" onClick={() => setShowModal(true)}>Edit</button>
-        <button className="delete">Delete</button>
+        <button className="delete" onClick={deleteData}>Delete</button>
 
       </div>
 
