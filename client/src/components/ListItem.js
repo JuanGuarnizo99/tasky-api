@@ -26,7 +26,7 @@ function ListItem({task}) {
 
       </div>
 
-      {showModal && <Modal mode={'edit'} setShowModal={setShowModal}/>}
+      {showModal && <Modal mode={'edit'} setShowModal={setShowModal} task = {task}/>}
     </li>
   );
 }
