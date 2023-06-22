@@ -44,6 +44,24 @@ app.post('/todos', async (req, res)=>{
     }); 
 });
 
+// Edit a todo
+
+app.put('/todos/:id', async (req, res)=>{
+    const {id} = req.params;
+    const {user_email, title, progress, date} = req.body;
+
+    await pool.query('UPDATE todos SET user_email = $1, title = $2, progress = $3, date = $4 WHERE id = $5 RETURNING *',
+    [user_email, title, progress, date, id])
+   .then((newTask) => {
+        console.log(newTask.rows);
+        res.status(200).json(newTask.rows);
+    })
+   .catch((err) => {
+        console.error(err);
+    }); 
+});
+
+
 app.listen(PORT, () => {
     console.log(`server running on PORT ${PORT}`);
 });

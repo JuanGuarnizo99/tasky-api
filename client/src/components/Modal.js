@@ -8,7 +8,7 @@ function Modal({ mode, setShowModal, task, getData }) {
     user_email: editMode ? task.user_email : "juansito@gmail.com",
     title: editMode ? task.title : "test title",
     progress: editMode ? task.progress : 50,
-    date: editMode ? "" : new Date(),
+    date: editMode ? task.date : new Date(),
   });
 
   // Posts the data object to the backend
@@ -22,6 +22,23 @@ function Modal({ mode, setShowModal, task, getData }) {
       },
       body: JSON.stringify(data),
     })
+      .then((res) => {
+        if (res.status === 200) {
+          setShowModal(false);
+          getData();
+        }
+      })
+      .catch((err) => console.error(err));
+  };
+
+  // Edits a task object
+  const editData = async (e) => {
+    e.preventDefault();
+    await fetch(`http://localhost:8000/todos/${task.id}`, {
+      method: "PUT",
+      headers: {"content-type": "application/json"},
+      body: JSON.stringify(data),
+    })
     .then((res) => {
       if(res.status === 200) {
         setShowModal(false);
@@ -29,7 +46,7 @@ function Modal({ mode, setShowModal, task, getData }) {
       }
     })
     .catch((err) => console.error(err));
-};
+  };
 
   // changes the data object when typing on the input components
   const handleChange = (e) => {
@@ -50,7 +67,7 @@ function Modal({ mode, setShowModal, task, getData }) {
           <h3>Let's {mode} your task</h3>
           <button onClick={() => setShowModal(false)}>X</button>
         </div>
-        <form onSubmit={editMode ? "" : postData}>
+        <form onSubmit={editMode ? editData : postData}>
           <input
             required
             maxLength="30"
