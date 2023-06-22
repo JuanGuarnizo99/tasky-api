@@ -30,18 +30,18 @@ app.get('/todos/:userEmail', async (req, res)=>{
 app.post('/todos', async (req, res)=>{
     const {user_email, title, progress, date} = req.body;
     console.log(user_email, title, progress, date);
-    //call uuidv4 to get a unique id
+    // call uuidv4 to get a unique id
     const id = uuidv4();
-
-    try {
-        const insertion = await pool.query('INSERT INTO todos (id, user_email, title, progress, date) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-        [id, user_email, title, progress, date]);
-        console.log(insertion.rows);
-        res.json(insertion.rows);
-    } 
-    catch (error) {
-        console.error(error);
-    }
+    // insert the todo into the database
+    await pool.query('INSERT INTO todos (id, user_email, title, progress, date) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+    [id, user_email, title, progress, date])
+    .then((newTask) => {
+        console.log(newTask.rows);
+        res.status(200).json(newTask.rows);
+    })
+    .catch((err) => {
+        console.error(err);
+    }); 
 });
 
 app.listen(PORT, () => {
