@@ -14,14 +14,16 @@ app.get('/todos/:userEmail', async (req, res)=>{
 
     const {userEmail} = req.params;
 
-    try{
-        const todos = await pool.query('SELECT * FROM todos WHERE user_email = $1', [userEmail]);
+    await pool.query('SELECT * FROM todos WHERE user_email = $1', [userEmail])
+    .then((todos) => {
         console.log(todos.rows);
         res.json(todos.rows);
-    }
-    catch(err){
+
+    })
+    .catch((err) => {
         console.error(err);
-    }
+    });   
+    
 });
 
 // Create a new todo
