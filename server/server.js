@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const pool = require('./db');
 const {v4: uuidv4} = require('uuid');
+const bcrypt = require('bcrypt');
 
 
 app.use(cors());
@@ -70,6 +71,19 @@ app.delete('/todos/:id', async (req, res)=>{
     })
     .catch((err) => console.error(err));
 });
+
+// login route
+app.post('/login', async (req, res)=>{
+    const {user_email, password} = req.body;
+
+})
+
+// sign up route
+app.post('/signup', async (req, res)=>{
+    const {user_email, password} = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+})
 
 
 app.listen(PORT, () => {
