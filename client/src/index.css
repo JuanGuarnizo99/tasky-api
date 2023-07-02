@@ -216,3 +216,16 @@ input {
 
 }
 
+.copyright {
+    font-size: 13px;
+    margin: 10px;
+    color: rgb(120, 120, 120);
+
+}
+
+.user-email {
+    float: right;
+    font-size: 13px;
+    margin: 10px;
+    color: rgb(120, 120, 120);
+}
