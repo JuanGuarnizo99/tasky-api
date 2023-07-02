@@ -4,7 +4,7 @@ body {
     background-color: rgb(100, 151, 177);
     display: flex;
     justify-content: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .app{
@@ -112,6 +112,8 @@ input {
     display: flex;
     justify-content: space-between;
     border-bottom: rgba(0, 0, 0, 0.05) 1px solid;
+    float:left;
+    margin: 10px;
 }
 
 /* List Item */
@@ -204,6 +206,13 @@ input {
 
 }
 
+.auth-sign{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: large;
+    color: rgb(50, 50, 50);
+    display: flex;
+}
+
 .auth-options {
     display: flex;
 }
@@ -228,4 +237,39 @@ input {
     font-size: 13px;
     margin: 10px;
     color: rgb(120, 120, 120);
+}
+
+/* progress bars */
+.outer-bar {
+    width: 200px;
+    height: 14px;
+    background-color: rgb(220, 220, 220);
+    border-radius: 7px;
+    overflow: hidden;
+
+}
+
+.inner-bar {
+    height: 14px;
+
+}
+
+.task-title {
+    width: 300px;
+}
+
+.banner {
+    width: 100%;
+    background-color: white;
+    height: 5px;
+    margin-top: 0;
+}
+
+.tasky {
+    width: fit-content;
+    height: 100%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: larger;
+    color: rgb(120, 120, 120);
+    text-align: center;
 }
