@@ -52,7 +52,7 @@ function Auth() {
     <div className='auth-container'>
       <div className="auth-container-box">
         <form onSubmit={(e) => handleSubmit(e, isLogIn? '/login' : '/signup')}>
-          <h2>{isLogIn ? "Please log in" : "Please sign up"}</h2>
+          <h2 className="auth-sign">{isLogIn ? "Please log in" : "Please sign up"}</h2>
           <input type="email" placeholder="email" onChange={(e) => setEmail(e.target.value)}/>
           <input type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)}/>
           {!isLogIn && <input type="password" placeholder="confirm password" onChange={(e) => setConfirmPassword(e.target.value)}/>}
