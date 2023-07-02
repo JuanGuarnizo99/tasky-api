@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useCookies } from "react-cookie";
 
 function Auth() {
 
+  const [cookies, setCookie, removeCookie] = useCookies(null);
   const [isLogIn, setIsLogIn] = useState(true);
 
   const [error, setError] = useState(null);
@@ -22,15 +24,26 @@ function Auth() {
       setError("Passwords do not match!");
       return;
     }
+    console.log(endpoint);
 
-    await fetch(`${process.env.REACT_APP_API_URL}/${endpoint}`, {
+    await fetch(`${process.env.REACT_APP_SERVERURL}${endpoint}`, {
       method: 'POST',
       headers: {'content-type': 'application/json'},
       body: JSON.stringify({email, password})
     })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      if(data.detail){
+        setError(data.detail);
+      }
+      else{
+        console.log(data.email);
+        console.log(data.token);
+        setCookie('Email', data.email);
+        setCookie('AuthToken', data.token);
+        //refresh the page
+        window.location.reload();
+      }
     })
     .catch((error) => console.error(error));
   }

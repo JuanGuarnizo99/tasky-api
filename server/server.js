@@ -5,6 +5,7 @@ const app = express();
 const pool = require('./db');
 const {v4: uuidv4} = require('uuid');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 
 app.use(cors());
@@ -80,10 +81,22 @@ app.post('/login', async (req, res)=>{
 
 // sign up route
 app.post('/signup', async (req, res)=>{
-    const {user_email, password} = req.body;
+    //Get data from client
+    const {email, password} = req.body;
+    //Create the hashsed password
     const hashedPassword = await bcrypt.hash(password, 10);
+    //Insert the hashsed password in the database
+    await pool.query('INSERT INTO users (email, hashed_password) VALUES ($1, $2) RETURNING email', [email, hashedPassword])
+    .then(() => {
+        //create token
+        const token = jwt.sign({email}, 'secret', {expiresIn: '1h'});
+        //send response with eamil and token for the cookies
+        res.status(200).json({'email': email, 'token': token});
+    })
+    .catch((error) => { res.json({'detail': error.detail})});
 
-})
+
+});
 
 
 app.listen(PORT, () => {
