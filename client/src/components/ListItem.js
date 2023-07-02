@@ -31,7 +31,7 @@ function ListItem({task, getData}) {
       <div className="info-container">
         <TickIcon></TickIcon>
         <p className="task-title">{task.title}</p>
-        <ProgressBar></ProgressBar>
+        <ProgressBar progress={task.progress}></ProgressBar>
       </div>
 
       {/* button container */}
