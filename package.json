@@ -5,7 +5,8 @@
   "scripts": {
     "build": "if-env  TYPE=server && (cd server && npm install) || (cd client && npm install)",
     "server": "cd server && nodemon server.js",
-    "client": "cd client && npm start"
+    "client": "cd client && npm start",
+    "start": "(npm run server) && (npm run client)"
   },
   "dependencies": {
     "if-env": "^1.0.4",
