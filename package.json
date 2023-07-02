@@ -6,9 +6,10 @@
     "build": "if-env  TYPE=server && (cd server && npm install) || (cd client && npm install)",
     "server": "cd server && node server.js",
     "client": "cd client && npm start",
-    "start": "(npm run server) && (npm run client)"
+    "start": "concurrently \"cd server && node server.js\" \"cd client && npm run start\""
   },
   "dependencies": {
+    "concurrently": "^8.2.0",
     "if-env": "^1.0.4",
     "pg": "^8.11.0"
   }
