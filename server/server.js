@@ -75,7 +75,22 @@ app.delete('/todos/:id', async (req, res)=>{
 
 // login route
 app.post('/login', async (req, res)=>{
-    const {user_email, password} = req.body;
+    //get data from client
+    const {email, password} = req.body;
+    //get the user from the db
+    const users = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+    //check for 'user not in database' error
+    if(users.rowCount === 0) res.status(404).json({detail: 'User does not exist'})
+    //compare password against db password
+    const success = await bcrypt.compare(password, users.rows[0].hashed_password);
+    if(success) {
+        //create token
+        const token = jwt.sign({email}, 'secret', {expiresIn: '1h'});
+        res.status(200).json({'email': users.rows[0].email, 'token': token});
+    }
+    else{
+        res.status(401).json({'detail': 'Incorrect password'});
+    }
 
 })
 
