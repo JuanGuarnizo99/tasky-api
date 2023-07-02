@@ -1,6 +1,7 @@
 import ListHeader from "./components/ListHeader";
 import ListItem from "./components/ListItem";
 import Auth from "./components/Auth";
+import Banner from "./components/Banner";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 
@@ -40,11 +41,12 @@ const App = () => {
 
   return (
     <div className="app">
+      <Banner></Banner>
       {!authToken && <Auth></Auth>}
       {/* Only shows if auth token exists */}
       {authToken && (
         <>
-          <ListHeader listName={" 👨🏻‍💻 CS tick list"} getData={getData} />
+          <ListHeader listName={" 👨‍💻 My To Do "} getData={getData} />
           <p className="user-email">Welcome back {userEmail}</p>
           {sortedTasks?.map((task) => (
             <ListItem key={task.id} task={task} getData={getData} />
