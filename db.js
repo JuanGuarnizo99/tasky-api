@@ -6,7 +6,8 @@ const pool = new Pool({
     password: process.env.DBPASSWORD,
     host: process.env.DBHOST,
     port: process.env.DBPORT,
-    database: 'tasky'
+    database: 'tasky',
+    ssl: true
 });
 
 // const test_connection = async () => {
