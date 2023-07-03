@@ -1,16 +1,24 @@
 {
-  "name": "tasky",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
+  "main": "index.js",
   "scripts": {
-    "build": "if-env  TYPE=server && (cd server && npm install) || (cd client && npm install)",
-    "server": "cd server && node server.js",
-    "client": "cd client && npm start",
-    "start": "concurrently \"cd server && node server.js\" \"cd client && npm run start\""
+    "start": "nodemon server.js",
+    "deploy": "node server.js"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "concurrently": "^8.2.0",
-    "if-env": "^1.0.4",
-    "pg": "^8.11.0"
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "nodemon": "^2.0.22",
+    "pg": "^8.11.1",
+    "uuid": "^9.0.0"
   }
+  
 }
