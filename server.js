@@ -19,7 +19,7 @@ app.get('/todos/:userEmail', async (req, res)=>{
     await pool.query('SELECT * FROM todos WHERE user_email = $1', [userEmail])
     .then((todos) => {
         console.log(todos.rows);
-        res.json(todos.rows);
+        return res.json(todos.rows);
 
     })
     .catch((err) => {
@@ -39,7 +39,7 @@ app.post('/todos', async (req, res)=>{
     [id, user_email, title, progress, date])
     .then((newTask) => {
         console.log(newTask.rows);
-        res.status(200).json(newTask.rows);
+        return res.status(200).json(newTask.rows);
     })
     .catch((err) => {
         console.error(err);
@@ -55,7 +55,7 @@ app.put('/todos/:id', async (req, res)=>{
     [user_email, title, progress, date, id])
    .then((newTask) => {
         console.log(newTask.rows);
-        res.status(200).json(newTask.rows);
+        return res.status(200).json(newTask.rows);
     })
    .catch((err) => {
         console.error(err);
@@ -68,7 +68,7 @@ app.delete('/todos/:id', async (req, res)=>{
     await pool.query('DELETE FROM todos WHERE id = $1 RETURNING *', [id])
     .then((deletedTask) => {
         console.log(deletedTask.rows);
-        res.status(200).json(deletedTask.rows);
+        return res.status(200).json(deletedTask.rows);
     })
     .catch((err) => console.error(err));
 });
@@ -105,12 +105,13 @@ app.post('/signup', async (req, res)=>{
     //Insert the hashsed password in the database
     await pool.query('INSERT INTO users (email, hashed_password) VALUES ($1, $2) RETURNING email', [email, hashedPassword])
     .then(() => {
+        console.log(email);
         //create token
         const token = jwt.sign({email}, 'secret', {expiresIn: '1h'});
         //send response with eamil and token for the cookies
-        res.status(200).json({'email': email, 'token': token});
+        return res.status(200).json({'email': email, 'token': token});
     })
-    .catch((error) => { res.json({'detail': error.detail})});
+    .catch((error) => { return res.json({'detail': error.detail})});
 
 
 });
