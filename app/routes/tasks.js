@@ -14,7 +14,7 @@ router.post("/create", create_task_controller);
 router.put("/edit/:id", edit_task_controller);
 
 //delete task route
-router.delete("/delete:id", delete_task_controller);
+router.delete("/delete/:id", delete_task_controller);
 
 //get tasks route
 router.get("/get/:userEmail", get_tasks_controller);
